@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file is part of the re-motion Core Framework (www.re-motion.org)
+ ! Copyright (C) 2005-2009 rubicon informationstechnologie gmbh, www.rubicon.eu
+ ! 
+ ! The re-motion Core Framework is free software; you can redistribute it 
+ ! and/or modify it under the terms of the GNU Lesser General Public License 
+ ! version 3.0 as published by the Free Software Foundation.
+ ! 
+ ! re-motion is distributed in the hope that it will be useful, 
+ ! but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ ! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+ ! GNU Lesser General Public License for more details.
+ ! 
+ ! You should have received a copy of the GNU Lesser General Public License
+ ! along with re-motion; if not, see http://www.gnu.org/licenses.
+-->
+<project xmlns="nant-schema" name="Remotion.ObjectBinding.Web.CodeGenerator">
+  <property name="build.outputdir" value="${path::get-full-path('build')}" />
+  <property name="build.zipdir" value="${path::get-full-path('.')}" />
+  <property name="build.templatedir" value="${path::get-full-path('Templates')}" />
+  <property name="build.libdir" value="${path::get-full-path('lib')}" />
+
+  <target name="clean" description="cleans up the destination directory for the build">
+    <delete dir="${build.outputdir}" includeemptydirs="true" />
+  </target>
+  
+  <target name="build" description="perform a build">
+    <nant buildfile="Core/Remotion.ObjectBinding.Web.CodeGenerator.build" target="build" inheritall="true" />
+  </target>
+
+  <target name="copyprerequisites" description="perform a build">
+    <copy todir="${build.outputdir}/Templates" flatten="false" overwrite="true">
+      <fileset basedir="${build.templatedir}">
+        <include name="**/*.*" />
+      </fileset>
+    </copy>
+
+    <copy todir="${build.outputdir}" flatten="false" overwrite="true">
+      <fileset basedir="${build.libdir}">
+        <include name="**/*.*" />
+      </fileset>
+    </copy>
+
+    <!-- Copy license here -->
+  </target>
+
+  <target name="zip" description="zips the build results">
+    <zip zipfile="${build.zipdir}/uigen.zip">
+      <fileset basedir="${build.outputdir}">
+        <include name="**/*" />
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="all" description="performs a build and zips the build results">
+    <call target="clean" />
+    <call target="copyprerequisites" />
+    <call target="build" />
+    <call target="zip" />
+  </target>
+
+</project>
