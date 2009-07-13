@@ -23,7 +23,7 @@ using System.Web.UI;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle ("DomainObjects.CodeGenerator.Console")]
+[assembly: AssemblyTitle ("Remotion.ObjectBinding.Web.CodeGenerator")]
 [assembly: AssemblyDescription ("Code generator for web applications")]
 [assembly: AssemblyConfiguration("@buildinfo@")]
 [assembly: AssemblyCompany("@company@")]
