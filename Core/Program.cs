@@ -13,9 +13,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with re-motion; if not, see http://www.gnu.org/licenses.
 // 
-using System;
+
 using Remotion.Text.CommandLine;
-using Remotion.ObjectBinding.Web.CodeGenerator;
 
 namespace Remotion.ObjectBinding.Web.CodeGenerator
 {
@@ -34,7 +33,7 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
 
 		static string CopyrightInformation
 		{
-			get { return "Copyright (c) 2006, rubicon informationstechnologie gmbh"; }
+			get { return "Copyright (c) 2011, rubicon informationstechnologie gmbh"; }
 		}
 
 		static void PrintUsage(CommandLineClassParser parser, string message)
@@ -68,7 +67,6 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
 					PrintUsage(parser, null);
 					return 0;
 				}
-
 				if (arguments.ApplicationInfo)
 				{
 					System.Console.WriteLine(ApplicationInfo);
