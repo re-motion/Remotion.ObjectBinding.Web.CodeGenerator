@@ -1,5 +1,5 @@
 // This file is part of the re-motion Core Framework (www.re-motion.org)
-// Copyright (C) 2005-2009 rubicon informationstechnologie gmbh, www.rubicon.eu
+// Copyright (C) 2005-2011 rubicon informationstechnologie gmbh, www.rubicon.eu
 // 
 // The re-motion Core Framework is free software; you can redistribute it 
 // and/or modify it under the terms of the GNU Lesser General Public License 
@@ -15,8 +15,6 @@
 // 
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Web.UI;
 
 //
 // General Information about an assembly is controlled through the following 
@@ -27,8 +25,8 @@ using System.Web.UI;
 [assembly: AssemblyDescription ("Code generator for web applications")]
 [assembly: AssemblyConfiguration(".NET Framework: net-3.5, build type: debug")]
 [assembly: AssemblyCompany("rubicon informationstechnologie gmbh")]
-[assembly: AssemblyProduct("re-motion core framework (www.re-motion.org)")]
-[assembly: AssemblyCopyright("(c) 2005 - 2009 rubicon informationstechnologie gmbh, www.rubicon.eu")]
+[assembly: AssemblyProduct("re-motion contribution project (www.re-motion.org)")]
+[assembly: AssemblyCopyright("(c) 2005 - 2011 rubicon informationstechnologie gmbh, www.rubicon.eu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 [assembly: CLSCompliant(true)]
@@ -43,4 +41,4 @@ using System.Web.UI;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.13.6.0")]
+[assembly: AssemblyVersion("1.13.90.2")]

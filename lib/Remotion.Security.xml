@@ -10,6 +10,8 @@
             <see cref="T:System.IServiceProvider" />'s data.
             </summary></member><member name="M:Remotion.Security.IRevisionBasedSecurityProvider.GetRevision"><summary>Gets the current revison number.</summary></member><member name="T:Remotion.Security.NullGlobalAccessTypeCacheProvider"><summary>
             Represents a nullable <see cref="T:Remotion.Security.IGlobalAccessTypeCacheProvider" /> according to the "Null Object Pattern".
+            </summary></member><member name="T:Remotion.Security.NullPrincipalProvider"><summary>
+            Represents a nullable <see cref="T:Remotion.Security.IPrincipalProvider" /> according to the "Null Object Pattern".
             </summary></member><member name="T:Remotion.Security.NullSecurityClient"><summary>
             Represents a nullable <see cref="T:Remotion.Security.SecurityClient" /> according to the "Null Object Pattern".
             </summary></member><member name="T:Remotion.Security.NullSecurityPrincipal"><summary>
@@ -19,8 +21,6 @@
             extending <see cref="T:System.Configuration.Provider.ProviderBase" /> and implementing <see cref="T:Remotion.Security.ISecurityProvider" />.
             </summary></member><member name="M:Remotion.Security.NullSecurityProvider.GetAccess(Remotion.Security.ISecurityContext,Remotion.Security.ISecurityPrincipal)"><summary>
             The "Null Object" implementation always returns an empty array.
-            </summary></member><member name="T:Remotion.Security.PrincipalUserProvider"><summary>
-            Represents a nullable <see cref="T:Remotion.Security.IPrincipalProvider" /> according to the "Null Object Pattern".
             </summary></member><member name="T:Remotion.Security.SecurityContext"><summary>Collects all security-specific information for a securable object, and is passed as parameter during the permission check.</summary></member><member name="M:Remotion.Security.SecurityContext.CreateStateless(System.Type)"><summary>
             Creates a new instance of the <see cref="T:Remotion.Security.SecurityContext" /> type initialized for a stateless scenario, i.e. before an actual instance of the
             specified <paramref name="type" /> is available to supply state information. One such occurance would be the creation of a new instance of 
@@ -56,10 +56,18 @@
             </param><param name="abstractRoles">
             The list abstract roles the current user has in regards to the securable object for which this <see cref="T:Remotion.Security.SecurityContext" /> is created.
             Must not be <see langword="null" />.
-            </param></member><member name="T:Remotion.Security.SecurityPrincipal"><summary>
+            </param></member><member name="T:Remotion.Security.SecurityFreeSection"><summary>
+            Represents a scope within no security will be evaluated.
+            </summary></member><member name="T:Remotion.Security.SecurityPrincipal"><summary>
             The <see cref="T:Remotion.Security.SecurityPrincipal" /> type represents a user, and optionally his active role and the user for whom he's acting as a substitue.
             </summary></member><member name="T:Remotion.Security.SecurityPrincipalRole"><summary>
             The <see cref="T:Remotion.Security.SecurityPrincipalRole" /> type defines a role the user can be in.
             </summary></member><member name="M:Remotion.Security.SecurityPrincipalRole.#ctor(System.String,System.String)"><summary>
             Initializes a new instance of the <see cref="T:Remotion.Security.SecurityPrincipalRole" /> type.
-            </summary><param name="group">The group the user is a member of when he is this role. Must not be <see langword="null" /> or empty.</param><param name="position">The position in the <paramref name="group" />. Must not be empty.</param></member><member name="T:Remotion.Security.Configuration.GlobalAccessTypeCacheProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.IGlobalAccessTypeCacheProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.PermissionProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.Metadata.IPermissionProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.PrincipalProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.IPrincipalProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.SecurityConfiguration"><summary> The configuration section for <see cref="N:Remotion.Security" />. </summary></member><member name="T:Remotion.Security.Configuration.SecurityProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.ISecurityProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member></members></doc>
+            </summary><param name="group">The group the user is a member of when he is this role. Must not be <see langword="null" /> or empty.</param><param name="position">The position in the <paramref name="group" />. Must not be empty.</param></member><member name="T:Remotion.Security.Configuration.GlobalAccessTypeCacheProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.IGlobalAccessTypeCacheProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.PermissionProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.Metadata.IPermissionProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.PrincipalProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.IPrincipalProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Configuration.SecurityConfiguration"><summary> The configuration section for <see cref="N:Remotion.Security" />. </summary></member><member name="T:Remotion.Security.Configuration.SecurityProviderHelper"><summary>Helper class that loads implementations of <see cref="T:Remotion.Security.ISecurityProvider" /> from the <see cref="T:Remotion.Security.Configuration.SecurityConfiguration" /> section.</summary></member><member name="T:Remotion.Security.Metadata.IMemberResolver"><summary>
+            Class is used to get 
+            </summary></member><member name="T:Remotion.Security.Metadata.MemberAffiliation"><summary>
+            Describes if a member is static or instance-based.
+            </summary></member><member name="T:Remotion.Security.Metadata.PermissionReflector"><summary>
+            Implements the <see cref="T:Remotion.Security.Metadata.IPermissionProvider" /> for a reflection-based security declaration.
+            </summary></member></members></doc>

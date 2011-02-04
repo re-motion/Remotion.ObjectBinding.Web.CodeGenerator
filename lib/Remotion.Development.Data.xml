@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><doc><assembly>
         <name>Remotion.Development.Data</name>
     </assembly><members><member name="T:Remotion.Development.Data.UnitTesting.DomainObjects.Linq.ApplyQueryExecutorMixinAttribute"><summary>
-            This attribute applies the <see cref="T:Remotion.Development.Data.UnitTesting.DomainObjects.Linq.QueryExecutorMixin" /> to the <see cref="T:Remotion.Data.DomainObjects.Linq.QueryExecutor`1" /> type.
+            This attribute applies the <see cref="T:Remotion.Development.Data.UnitTesting.DomainObjects.Linq.QueryExecutorMixin" /> to the <see cref="T:Remotion.Data.DomainObjects.Linq.DomainObjectQueryExecutor" /> type.
             Apply this attribute to your (unit test) assembly.
             </summary></member><member name="T:Remotion.Development.Data.UnitTesting.DomainObjects.Linq.ExpressionTreeComparer"><summary>
             The <see cref="T:Remotion.Development.Data.UnitTesting.DomainObjects.Linq.ExpressionTreeComparer" /> compares two expressions for as to wether they result in the same SQL statement and parameters.

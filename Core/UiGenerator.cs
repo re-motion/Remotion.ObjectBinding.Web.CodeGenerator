@@ -18,20 +18,24 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Collections;
+using System.Linq;
 using System.Reflection;
 using Remotion.Configuration;
 using Remotion.Data.DomainObjects.Configuration;
 using Remotion.Data.DomainObjects.ConfigurationLoader.ReflectionBasedConfigurationLoader;
 using Remotion.Data.DomainObjects.Development;
 using Remotion.Data.DomainObjects.Mapping;
-using Remotion.Data.DomainObjects.ObjectBinding;
+using Remotion.Data.DomainObjects.Persistence;
 using Remotion.Data.DomainObjects.Persistence.Configuration;
 using Remotion.Data.DomainObjects.Persistence.Rdbms;
-using Remotion.Data.DomainObjects;
+using Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer;
+using Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.Sql2005;
 using Remotion.Data.DomainObjects.Queries.Configuration;
 using Remotion.ObjectBinding.BindableObject;
 using Remotion.ObjectBinding.BindableObject.Properties;
-using Remotion.Reflection;
+using Remotion.Reflection.TypeDiscovery;
+using Remotion.Reflection.TypeDiscovery.AssemblyFinding;
+using Remotion.Reflection.TypeDiscovery.AssemblyLoading;
 using Remotion.Utilities;
 
 namespace Remotion.ObjectBinding.Web.CodeGenerator
@@ -76,7 +80,9 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
 
     protected virtual void InitializeConfiguration (string assemblyDirectory)
     {
-      ApplicationAssemblyFinderFilter filter = ApplicationAssemblyFinderFilter.Instance;
+      ApplicationAssemblyLoaderFilter filter = ApplicationAssemblyLoaderFilter.Instance;
+      
+      // TODO: Duplicates logic from AssemblyFinder? The DLL searching part below can probably be removed.
       List<Assembly> assemblies = new List<Assembly>();
       DirectoryInfo dir = new DirectoryInfo (assemblyDirectory);
       foreach (FileInfo file in dir.GetFiles ("*.dll"))
@@ -88,9 +94,17 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
       DomainObjectsConfiguration.SetCurrent (
           new FakeDomainObjectsConfiguration (DomainObjectsConfiguration.Current.MappingLoader, GetPersistenceConfiguration (), new QueryConfiguration()));
 
+      var rootAssemblyFinder = new FixedRootAssemblyFinder(assemblies.Select(a => new RootAssembly(a, false)).ToArray());
+
+      var assemblyLoader = new FilteringAssemblyLoader(filter);
       ITypeDiscoveryService typeDiscoveryService =
-          new AssemblyFinderTypeDiscoveryService (new AssemblyFinder (ApplicationAssemblyFinderFilter.Instance, assemblies.ToArray()));
-      MappingConfiguration.SetCurrent (new MappingConfiguration (new MappingReflector (typeDiscoveryService)));
+          new AssemblyFinderTypeDiscoveryService(new AssemblyFinder(rootAssemblyFinder, assemblyLoader));
+
+      var mappingReflector = new MappingReflector (typeDiscoveryService);
+      var persistenceModelLoader =
+        new PersistenceModelLoader(new StorageProviderDefinitionFinder(DomainObjectsConfiguration.Current.Storage));
+      var mappingConfiguration = new MappingConfiguration (mappingReflector, persistenceModelLoader);
+      MappingConfiguration.SetCurrent (mappingConfiguration);
     }
 
     protected StorageConfiguration GetPersistenceConfiguration ()
@@ -99,7 +113,7 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
       if (storageConfiguration.DefaultStorageProviderDefinition == null)
       {
         ProviderCollection<StorageProviderDefinition> storageProviderDefinitionCollection = new ProviderCollection<StorageProviderDefinition> ();
-        RdbmsProviderDefinition providerDefinition = new RdbmsProviderDefinition ("Default", typeof (SqlProvider), "Initial Catalog=DatabaseName;");
+        RdbmsProviderDefinition providerDefinition = new RdbmsProviderDefinition ("Default", typeof (SqlStorageObjectFactory), "Initial Catalog=DatabaseName;");
         storageProviderDefinitionCollection.Add (providerDefinition);
 
         storageConfiguration = new StorageConfiguration (storageProviderDefinitionCollection, providerDefinition);
@@ -154,7 +168,10 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
 					ClassInfo classInfo = new ClassInfo();
 
 					classInfo.type = classDefinition.ClassType;
-					classInfo.objectClass = BindableObjectProvider.GetBindableObjectClass (classDefinition.ClassType);
+					// classInfo.objectClass = BindableObjectProvider.GetBindableObjectClass (classDefinition.ClassType);
+          classInfo.objectClass =
+				    BindableObjectProvider.GetProviderForBindableObjectType(classDefinition.ClassType).GetBindableObjectClass(
+				      classDefinition.ClassType);
 					classInfo.properties = GetProperties(classInfo.objectClass.GetPropertyDefinitions());
 
 					classInfoList.Add(classInfo);
