@@ -113,7 +113,7 @@ namespace Remotion.ObjectBinding.Web.CodeGenerator
       if (storageConfiguration.DefaultStorageProviderDefinition == null)
       {
         ProviderCollection<StorageProviderDefinition> storageProviderDefinitionCollection = new ProviderCollection<StorageProviderDefinition> ();
-        RdbmsProviderDefinition providerDefinition = new RdbmsProviderDefinition ("Default", typeof (SqlStorageObjectFactory), "Initial Catalog=DatabaseName;");
+        RdbmsProviderDefinition providerDefinition = new RdbmsProviderDefinition ("Default", new SqlStorageObjectFactory (), "Initial Catalog=DatabaseName;");
         storageProviderDefinitionCollection.Add (providerDefinition);
 
         storageConfiguration = new StorageConfiguration (storageProviderDefinitionCollection, providerDefinition);
