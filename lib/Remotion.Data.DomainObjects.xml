@@ -854,6 +854,66 @@
             <see cref="T:Remotion.Data.DomainObjects.ObjectID"/>.
             </summary>
         </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityDefinitionProvider">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityDefinitionProvider"/> returns a <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition"/>s for the <see cref="T:Remotion.Data.DomainObjects.Mapping.ClassDefinition"/>s.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionProvider">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionProvider"/> provides a strategy to get all entity definitions for a collection of <see cref="T:Remotion.Data.DomainObjects.Mapping.ClassDefinition"/>s. 
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition"/> defines the API for all column definitions.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Model.IStoragePropertyDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Model.IStoragePropertyDefinition"/> defines the API for a storable property defintion.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.IScriptBuilder">
+            <summary>
+            Defines an interface for classes generating script files for several <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition"/>s.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.SynonymScriptBuilderBase">
+            <summary>
+            Contains database-independent code for generating synonyms for the persistence model.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionVisitor">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionVisitor"/> defines the API for the entity definition visitor implementations.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlIndexDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlIndexDefinition"/> represents an index on a table or view in a SQL Server database.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlIndexDefinitionBase">
+            <summary>
+            Acts as a base class for classes defining SQL Server indexes.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IIndexDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IIndexDefinition"/> defines an index definition in a relational database.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.ISqlIndexDefinitionVisitor">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.ISqlIndexDefinitionVisitor"/> defines the API for all index-definition visitor implementations.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IIndexDefinitionVisitor">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IIndexDefinitionVisitor"/> defines the API for the index definition visitor implementations.
+            </summary>
+        </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ColumnDefinitionFinder">
             <summary>
             The <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ColumnDefinitionFinder"/> checks if the visited column is available in the specified column definitions and if yes, the visited
@@ -875,6 +935,26 @@
             <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinitionResolver"/> defines the API for all column definition resolver implementations.
             </summary>
         </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityDefinitionBase">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityDefinitionBase"/> is the base-class for all entity definitions.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition"/> defines the API for an entity definition for a relational database.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Model.IStorageEntityDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Model.IStorageEntityDefinition"/> defines the API for a storable entity definition.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityNameDefinition">
+            <summary>
+            Defines the name of an entity in a relational database.
+            </summary>
+        </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ForeignKeyConstraintDefinitionFactory">
             <summary>
             The <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ForeignKeyConstraintDefinitionFactory"/> is responsible to create all <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ForeignKeyConstraintDefinition"/>s for a 
@@ -894,9 +974,9 @@
             constraints.
             </summary>
         </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SqlColumnDefinitionFindingVisitor">
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SimpleColumnDefinitionFindingVisitor">
             <summary>
-            The <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SqlColumnDefinitionFindingVisitor"/> findes all <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SimpleColumnDefinition"/>s in the specified column list.
+            The <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SimpleColumnDefinitionFindingVisitor"/> findes all <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SimpleColumnDefinition"/>s in the specified column list.
             </summary>
         </member>
         <member name="T:Remotion.Data.DomainObjects.Linq.StorageSpecificExpressionResolver">
@@ -1222,16 +1302,6 @@
             <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ITableConstraintDefinition"/> defines the API for all table constraint definition implementations.
             </summary>
         </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition">
-            <summary>
-            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition"/> defines the API for all column definitions.
-            </summary>
-        </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Model.IStoragePropertyDefinition">
-            <summary>
-            <see cref="T:Remotion.Data.DomainObjects.Persistence.Model.IStoragePropertyDefinition"/> defines the API for a storable property defintion.
-            </summary>
-        </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ITableConstraintDefinitionVisitor">
             <summary>
             <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.ITableConstraintDefinitionVisitor"/> defines the API for all table constraint definition visitor implementations.
@@ -1245,16 +1315,6 @@
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.NullEntityDefinition">
             <summary>
             The <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.NullEntityDefinition"/> represents a non-existing entity.
-            </summary>
-        </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition">
-            <summary>
-            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinition"/> defines the API for an entity definition for a relational database.
-            </summary>
-        </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Model.IStorageEntityDefinition">
-            <summary>
-            <see cref="T:Remotion.Data.DomainObjects.Persistence.Model.IStorageEntityDefinition"/> defines the API for a storable entity definition.
             </summary>
         </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IDColumnDefinition">
@@ -2910,9 +2970,19 @@
             <see cref="T:Remotion.Data.DomainObjects.Persistence.IStorageProviderDefinitionFinder"/> defines the API for the storage provider definition finder implementations.
             </summary>
         </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionVisitor">
+        <member name="M:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlPrimaryXmlIndexDefinition.#ctor(System.String,Remotion.Data.DomainObjects.Persistence.Rdbms.Model.EntityNameDefinition,Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32})">
             <summary>
-            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IEntityDefinitionVisitor"/> defines the API for the entity definition visitor implementations.
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlPrimaryXmlIndexDefinition"/> represents a priamry xml-column index in a relational database.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.IndexScriptBuilderBase">
+            <summary>
+            Contains database-independent code for generating indexes for the persistence model.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.ScriptBuilderBase">
+            <summary>
+            Acts as an abstract base class for implementations generating a setup script for a list of entity definitions.
             </summary>
         </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.ForeignKeyDeclarationTableConstraintDefinitionVisitor">
@@ -2927,6 +2997,26 @@
             the  corresponding constraint statement for it.
             </summary>
         </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SchemaGeneration.SqlSynonymScriptBuilder">
+            <summary>
+            Generates SQL Server-specific synonyms for the persistence model.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlSecondaryXmlIndexDefinition">
+            <summary>
+            <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SqlSecondaryXmlIndexDefinition"/> represents a secondary xml-column index in a relational database.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.FileBuilder">
+            <summary>
+            Generates setup files for a list of mapped classes.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.IFileBuilder">
+            <summary>
+            Defines an interface for classes generating setup files for a list of mapped classes.
+            </summary>
+        </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.DeclarationListColumnDefinitionVisitor">
             <summary>
             Visits <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition"/> objects and generates a list of SQL declarations for the visited columns.
@@ -2937,12 +3027,22 @@
             Visits <see cref="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.IColumnDefinition"/> objects and generates a list of column names for the visited columns.
             </summary>
         </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SchemaGeneration.ViewBuilder">
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SchemaGeneration.SqlTableScriptBuilder">
+            <summary>
+            Generates SQL Server-specific tables for the persistence model.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.TableScriptBuilderBase">
+            <summary>
+            Contains database-independent code for generating tables for the persistence model.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SqlServer.SchemaGeneration.SqlViewScriptBuilder">
             <summary>
             Generates SQL Server-specific views for the persistence model.
             </summary>
         </member>
-        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.ViewBuilderBase">
+        <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.SchemaGeneration.ViewScriptBuilderBase">
             <summary>
             Contains database-independent code for generating views for the persistence model.
             </summary>
@@ -2971,7 +3071,7 @@
         </member>
         <member name="T:Remotion.Data.DomainObjects.Persistence.Rdbms.Model.SimpleColumnDefinition">
             <summary>
-            Defines a column in a SQL database.
+            Defines a column in a relational database.
             </summary>
         </member>
         <member name="T:Remotion.Data.DomainObjects.Mapping.Validation.Logical.StorageClassIsSupportedValidationRule">
@@ -5134,6 +5234,16 @@
             </exception>
             <exception cref="T:System.MissingMethodException">The concrete <see cref="T:Remotion.Data.DomainObjects.DomainObject"/> doesn't implement the required constructor.</exception>
             <exception cref="T:System.InvalidCastException">The loaded <see cref="T:Remotion.Data.DomainObjects.DomainObject"/> is not of the expected type <typeparamref name="T"/>.</exception>
+        </member>
+        <member name="M:Remotion.Data.DomainObjects.DomainObject.GetIDOrNull(Remotion.Data.DomainObjects.DomainObject)">
+            <summary>
+            Returns the <see cref="P:Remotion.Data.DomainObjects.DomainObject.ID"/> of the given <paramref name="domainObjectOrNull"/>, or <see langword="null"/> if 
+            <paramref name="domainObjectOrNull"/> is itself <see langword="null"/>.
+            </summary>
+            <param name="domainObjectOrNull">The <see cref="T:Remotion.Data.DomainObjects.DomainObject"/> whose <see cref="P:Remotion.Data.DomainObjects.DomainObject.ID"/> to get. If this parameter is 
+            <see langword="null"/>, the method returns <see langword="null"/>.</param>
+            <returns>The <paramref name="domainObjectOrNull"/>'s <see cref="P:Remotion.Data.DomainObjects.DomainObject.ID"/>, or <see langword="null"/> if <paramref name="domainObjectOrNull"/>
+            is <see langword="null"/>.</returns>
         </member>
         <member name="M:Remotion.Data.DomainObjects.DomainObject.#ctor">
             <summary>
@@ -7983,6 +8093,12 @@
         <member name="T:Remotion.Data.DomainObjects.DataManagement.CollectionEndPoint">
             <summary>
             Represents a collection-valued relation end-point in the <see cref="T:Remotion.Data.DomainObjects.DataManagement.RelationEndPointMap"/>.
+            </summary>
+        </member>
+        <member name="T:Remotion.Data.DomainObjects.DataManagement.DataManager">
+            <summary>
+            Manages the data (<see cref="T:Remotion.Data.DomainObjects.DataManagement.DataContainer"/> instances, <see cref="T:Remotion.Data.DomainObjects.DataManagement.IRelationEndPoint"/> instances, and invalid objects) for a 
+            <see cref="P:Remotion.Data.DomainObjects.DataManagement.DataManager.ClientTransaction"/>.
             </summary>
         </member>
         <member name="T:Remotion.Data.DomainObjects.DataManagement.NullCollectionEndPoint">
